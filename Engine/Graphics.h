@@ -68,6 +68,17 @@ public:
 	{
 		DrawLine(pos1.x, pos1.y, pos2.x, pos2.y, c);
 	}
+	void DrawMidpointCircle(int x_in, int y_in, int radius, Color c);
+	void DrawMidpointCircle(Vec2(pos_in), int radius, Color c)
+	{
+		DrawMidpointCircle(pos_in.x, pos_in.y, radius, c);
+	}
+	void DrawMidpointCircleFill(int x_in, int y_in, int radius, Color c);
+	void DrawMidpointCircleFill(Vec2(pos_in),int radius,Color c)
+	{
+		DrawMidpointCircleFill(pos_in.x, pos_in.y, radius, c);
+	}
+	
 	~Graphics();
 private:
 	Microsoft::WRL::ComPtr<IDXGISwapChain>				pSwapChain;

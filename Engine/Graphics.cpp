@@ -293,6 +293,36 @@ void Graphics::DrawLine(int x0, int y0, int x1, int y1, Color c)
 	}
 }
 
+void Graphics::DrawMidpointCircle(int x_in, int y_in, int radius, Color c)
+{
+	for (int x = x_in - radius; x <= x_in + radius; x++)
+	{
+		for (int y = y_in - radius; y <= y_in + radius; y++)
+		{
+			int dist = sqrt(((x - x_in) * (x - x_in)) + ((y - y_in) * (y - y_in)));
+			if (dist == radius)
+			{
+				PutPixel(x, y, c);
+			}
+		}
+	}
+}
+
+void Graphics::DrawMidpointCircleFill(int x_in, int y_in, int radius, Color c)
+{
+	for (int x = x_in - radius; x <= x_in + radius; x++)
+	{
+		for (int y = y_in - radius; y <= y_in + radius; y++)
+		{
+			int dist = sqrt( ((x - x_in)* (x - x_in)) + ((y - y_in) * (y - y_in)));
+			if (dist <= radius)
+			{
+				PutPixel(x, y, c);
+			}
+		}
+	}
+}
+
 Graphics::~Graphics()
 {
 	// free sysbuffer memory (aligned free)
