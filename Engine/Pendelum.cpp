@@ -15,7 +15,9 @@ void Pendelum::Update()
 
 	float force = (-1 * gravity * sin(angle)) / length;
 	
-	angleA = force;
+	angleA = force / mass;
 	angleV += angleA;
 	angle += angleV;
+
+	angleV *= damping;
 }
