@@ -17,8 +17,12 @@ private:
 	float Pi = 3.14159265359;
 	
 	float angle =  Pi/4;
+	float angleV = 0;
+	float angleA = 0;
+	float gravity = 1.0f;
 
 	int ballRadius = 15;
-	int length = 100; 
+	int length = 150; 
 	int lineThickness = 1;
+	
 };

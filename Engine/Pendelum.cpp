@@ -13,5 +13,9 @@ void Pendelum::Update()
 	pos.y = cos(angle) * length;
 	pos += origin;
 
-	angle += 0.01f;
+	float force = (-1 * gravity * sin(angle)) / length;
+	
+	angleA = force;
+	angleV += angleA;
+	angle += angleV;
 }
