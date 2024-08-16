@@ -240,6 +240,59 @@ Graphics::Graphics( HWNDKey& key )
 		_aligned_malloc( sizeof( Color ) * Graphics::ScreenWidth * Graphics::ScreenHeight,16u ) );
 }
 
+void Graphics::DrawRect(int x0, int y0, int x1, int y1, Color c)
+{
+	if (x0 > x1)
+	{
+		std::swap(x0, x1);
+	}
+	if (y0 > y1)
+	{
+		std::swap(y0, y1);
+	}
+
+	for (int y = y0; y < y1; ++y)
+	{
+		for (int x = x0; x < x1; ++x)
+		{
+			PutPixel(x, y, c);
+		}
+	}
+
+}
+
+void Graphics::DrawLine(int x0, int y0, int x1, int y1, Color c)
+{
+	// Calculate dx and dy 
+	int dx = x1 - x0;
+	int dy = y1 - y0;
+
+	int step;
+
+	// If dx > dy we will take step as dx 
+	// else we will take step as dy to draw the complete 
+	// line 
+	if (abs(dx) > abs(dy))
+		step = abs(dx);
+	else
+		step = abs(dy);
+
+	// Calculate x-increment and y-increment for each step 
+	float x_incr = (float)dx / step;
+	float y_incr = (float)dy / step;
+
+	// Take the initial points as x and y 
+	float x = x0;
+	float y = y0;
+
+	for (int i = 0; i < step; i++) 
+	{
+		PutPixel(round(x), round(y), c);
+		x += x_incr;
+		y += y_incr;
+	}
+}
+
 Graphics::~Graphics()
 {
 	// free sysbuffer memory (aligned free)
