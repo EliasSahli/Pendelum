@@ -261,7 +261,7 @@ void Graphics::DrawRect(int x0, int y0, int x1, int y1, Color c)
 
 }
 
-void Graphics::DrawLine(int x0, int y0, int x1, int y1, Color c)
+void Graphics::DrawLine(int x0, int y0, int x1, int y1, int thickness, Color c)
 {
 	// Calculate dx and dy 
 	int dx = x1 - x0;
@@ -287,7 +287,11 @@ void Graphics::DrawLine(int x0, int y0, int x1, int y1, Color c)
 
 	for (int i = 0; i < step; i++) 
 	{
-		PutPixel(round(x), round(y), c);
+		for (int j = -thickness +1; j <= thickness -1; j++)
+		{
+			PutPixel(round(x) +j , round(y)+ j, c);
+		}
+		
 		x += x_incr;
 		y += y_incr;
 	}

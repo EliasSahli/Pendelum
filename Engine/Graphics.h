@@ -63,10 +63,10 @@ public:
 	{
 		DrawRect(x0, y0, x0 + width, y0 + height, c);
 	}
-	void DrawLine(int x0, int y0, int x1, int y1, Color c);
-	void DrawLine(Vec2(pos1), Vec2(pos2), Color c)
+	void DrawLine(int x0, int y0, int x1, int y1, int thickness, Color c);
+	void DrawLine(Vec2(pos1), Vec2(pos2), int thickness,Color c)
 	{
-		DrawLine(pos1.x, pos1.y, pos2.x, pos2.y, c);
+		DrawLine(pos1.x, pos1.y, pos2.x, pos2.y,thickness, c);
 	}
 	void DrawMidpointCircle(int x_in, int y_in, int radius, Color c);
 	void DrawMidpointCircle(Vec2(pos_in), int radius, Color c)
