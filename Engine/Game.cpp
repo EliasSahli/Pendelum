@@ -38,8 +38,10 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	pendelum.Update();
 }
 
 void Game::ComposeFrame()
 {
+	pendelum.Draw(gfx);
 }
